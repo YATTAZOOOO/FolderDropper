@@ -56,7 +56,7 @@ def folder_copy_excel():
     path_input = input('Enter an Excel file path: ')
     column_input =  input('Enter a column name: ')
 
-    df = pd.read_excel(path_input, sheet_name="Лист1")  # Read Excel file into a DataFrame
+    df = pd.read_excel(path_input)  # Read Excel file into a DataFrame
     column_list = df[column_input].tolist()  # Extract the column values as a list
     
     source_dir_input = input('Enter a source folder path: ')
