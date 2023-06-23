@@ -2,9 +2,24 @@ import shutil
 import pandas as pd
 import os
 from art import *
+import time
 
-name = text2art("Folder_ Dropper  v.2") # Return ASCII text (default font) and default chr_ignore=True 
+time.sleep(0.3)
+print('----------------------------------------------------------------------------------------------------------------')
+time.sleep(0.3)
+
+name = text2art("Folder_ Dropper  v.1") # Return ASCII text (default font) and default chr_ignore=True 
 print(name)
+
+time.sleep(0.3)
+print('----------------------------------------------------------------------------------------------------------------')
+time.sleep(0.3)
+
+print('')
+print("What do you want?")
+print("1. Folder copy manually")
+print("2. Folder copy from an Excel file")
+user_choice = input('Write a number: ')
 
 def folder_copy():
 
@@ -38,8 +53,12 @@ def folder_copy():
 
 def folder_copy_excel():
 
-    df = pd.read_excel("C:\\Users\\User\\Desktop\\test.xlsx", sheet_name="Лист1")
-    column_list = df["Номер"].tolist()
+    path_input = input('Enter an Excel file path: ')
+    column_input =  input('Enter a column name: ')
+
+    df = pd.read_excel(path_input, sheet_name="Лист1")
+    column_list = df[column_input].tolist()
+    
     source_dir_input = input('Enter a source folder path: ')
     destination_dir_input = input('Enter a destination folder path: ')
 
@@ -62,5 +81,7 @@ def folder_copy_excel():
     else:
         print("Done")
 
-
-folder_copy()
+if user_choice == '1':
+    folder_copy()
+elif user_choice == '2':
+    folder_copy_excel()
